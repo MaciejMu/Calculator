@@ -50,8 +50,11 @@ function showResult() {
       result = a - b;
       break;
   }
-
-  currentNum.innerHTML = result;
+  if (result.toString().length > 15) {
+    currentNum.innerHTML = result.toPrecision(1);
+  } else {
+    currentNum.innerHTML = result;
+  }
   previousNum.innerHTML = "";
   operator = "";
 }
