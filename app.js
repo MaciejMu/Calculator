@@ -1,21 +1,32 @@
-const currentNum = document.querySelector(".current");
-const previousNum = document.querySelector(".previous");
-const numbersBtns = document.querySelectorAll(".btn_num");
-const operatorBtns = document.querySelectorAll(".btn_operator");
-const equalBtn = document.querySelector(".btn_equal");
-const clearBtn = document.querySelector(".btn_C");
+//Selectors
+function getElements(element) {
+  return document.querySelector(element);
+}
+function getElementsAll(element) {
+  return document.querySelectorAll(element);
+}
+const currentNum = getElements(".current");
+const previousNum = getElements(".previous");
+const numbersBtns = getElementsAll(".btn_num");
+const operatorBtns = getElementsAll(".btn_operator");
+const equalBtn = getElements(".btn_equal");
+const clearBtn = getElements(".btn_C");
 
-let result = "";
-let operator = "";
+///Listeners functions
+function addForEachListeners(selector, callback) {
+  selector.forEach((button) => button.addEventListener("click", callback));
+}
 
-///Listeners
-numbersBtns.forEach((button) => button.addEventListener("click", dislpayNum));
-operatorBtns.forEach((button) => button.addEventListener("click", operate));
+function addListener(selector, callback) {
+  selector.addEventListener("click", callback);
+}
 
-equalBtn.addEventListener("click", showResult);
-clearBtn.addEventListener("click", cleanScreen);
+addForEachListeners(numbersBtns, dislpayNum);
+addForEachListeners(operatorBtns, operate);
+addListener(equalBtn, showResult);
+addListener(clearBtn, clear);
 
-///Functions
+///Calc functions
 function dislpayNum() {
   if (this.textContent === "." && currentNum.innerHTML.includes(".")) return;
   if (this.textContent === "." && currentNum.innerHTML === "")
@@ -37,30 +48,24 @@ function operate() {
 }
 
 function showResult() {
-  if (previousNum.innerHTML === "") return;
   const a = parseFloat(previousNum.innerHTML);
   const b = parseFloat(currentNum.innerHTML);
-  if (isNaN(a) || isNaN(b)) return;
+  if ((previousNum.innerHTML === "" && isNaN(a)) || isNaN(b)) return;
 
-  switch (operator) {
-    case "+":
-      result = a + b;
-      break;
-    case "-":
-      result = a - b;
-      break;
-  }
-  if (result.toString().length > 15) {
+  result = operation(a, b, operator);
+
+  if (result.toString().length > 18) {
     currentNum.innerHTML = result.toPrecision(1);
   } else {
     currentNum.innerHTML = result;
   }
-  previousNum.innerHTML = "";
-  operator = "";
+  previousNum.innerHTML = operator = "";
 }
 
-function cleanScreen() {
-  previousNum.innerHTML = "";
-  currentNum.innerHTML = "";
-  operator = "";
+function operation(a, b, operator) {
+  return operator === "+" ? a + b : a - b;
+}
+
+function clear() {
+  previousNum.innerHTML = currentNum.innerHTML = operator = "";
 }
