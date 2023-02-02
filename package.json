@@ -1,0 +1,20 @@
+{
+  "name": "calculator-6",
+  "version": "1.0.0",
+  "description": "https://inspiring-heliotrope-5dba82.netlify.app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MaciejMu/Calculator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MaciejMu/Calculator/issues"
+  },
+  "homepage": "https://github.com/MaciejMu/Calculator#readme"
+}

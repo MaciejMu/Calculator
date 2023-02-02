@@ -5,12 +5,12 @@ function getElements(element) {
 function getElementsAll(element) {
   return document.querySelectorAll(element);
 }
-const currentNum = getElements(".current");
-const previousNum = getElements(".previous");
-const numbersBtns = getElementsAll(".btn_num");
-const operatorBtns = getElementsAll(".btn_operator");
-const equalBtn = getElements(".btn_equal");
-const clearBtn = getElements(".btn_C");
+const currentNum = document.querySelector(".current");
+const previousNum = document.querySelector(".previous");
+const numbersBtns = document.querySelectorAll(".btn_num");
+const operatorBtns = document.querySelectorAll(".btn_operator");
+const equalBtn = document.querySelector(".btn_equal");
+const clearBtn = document.querySelector(".btn_C");
 
 ///Listeners functions
 function addForEachListeners(selector, callback) {
