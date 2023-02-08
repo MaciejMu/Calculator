@@ -4,7 +4,7 @@
   "description": "https://inspiring-heliotrope-5dba82.netlify.app",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "compile": "tsc --watch"
   },
   "repository": {
     "type": "git",
