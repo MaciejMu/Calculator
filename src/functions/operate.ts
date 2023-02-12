@@ -1,5 +1,5 @@
-import { currentNum, updateOperator, previousNum } from "../app";
-import { showResult } from "./showResult";
+import { currentNum, previousNum } from "../app.js";
+import { showResult } from "./showResult.js";
 
 export function operate() {
   if (currentNum && previousNum) {
@@ -9,9 +9,7 @@ export function operate() {
     if (previousNum.innerHTML !== "") {
       showResult();
     }
-    let operator: string;
     previousNum.innerHTML = currentNum.innerHTML + this.textContent;
     currentNum.innerHTML = "";
-    updateOperator(this.textContent);
   }
 }

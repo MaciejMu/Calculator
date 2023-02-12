@@ -1,9 +1,7 @@
-import { currentNum } from "../app";
-import { previousNum } from "../app";
-import { updateOperator } from "../app";
+import { currentNum } from "../app.js";
+import { previousNum } from "../app.js";
 export function clear() {
     if (currentNum && previousNum) {
         previousNum.innerHTML = currentNum.innerHTML = "";
-        updateOperator("");
     }
 }

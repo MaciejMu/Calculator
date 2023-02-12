@@ -1,4 +1,4 @@
-import { currentNum } from "../app";
+import { currentNum } from "../app.js";
 
 export function dislpayNum() {
   if (currentNum) {

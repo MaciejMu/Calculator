@@ -1,8 +1,8 @@
-import { currentNum, updateOperator, previousNum } from "../app";
-import { operation } from "./operation";
-import { operator } from "../app";
+import { currentNum, previousNum } from "../app.js";
+import { operation } from "./operation.js";
 export function showResult() {
     if (currentNum && previousNum) {
+        const operator = previousNum.innerHTML.slice(-1);
         const a = parseFloat(previousNum.innerHTML);
         const b = parseFloat(currentNum.innerHTML);
         if ((previousNum.innerHTML === "" && isNaN(a)) || isNaN(b))
@@ -15,6 +15,5 @@ export function showResult() {
             currentNum.innerHTML = result.toString();
         }
         previousNum.innerHTML = "";
-        updateOperator("");
     }
 }
