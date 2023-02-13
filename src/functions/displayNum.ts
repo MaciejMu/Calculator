@@ -1,6 +1,6 @@
 import { currentNum } from "../app.js";
 
-export function dislpayNum() {
+export function displayNum() {
   if (currentNum) {
     if (this.textContent === "." && currentNum.innerHTML.includes(".")) return;
     if (this.textContent === "." && currentNum.innerHTML === "")
