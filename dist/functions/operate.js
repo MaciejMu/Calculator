@@ -1,16 +1,15 @@
-import { currentNum, previousNum } from "../app.js";
 import { showResult } from "./showResult.js";
-export function operate() {
-    if (currentNum && previousNum) {
-        if (this.textContent === "-" && currentNum.innerHTML === "") {
-            return (currentNum.innerHTML = "-");
+export const operate = (button, elements, defaultInput = "") => {
+    if (elements[0] && elements[1]) {
+        if (button.textContent === "-" && elements[0].innerHTML === defaultInput) {
+            return (elements[0].innerHTML = "-");
         }
-        else if (currentNum.innerHTML === "")
+        else if (elements[0].innerHTML === defaultInput)
             return;
-        if (previousNum.innerHTML !== "") {
-            showResult();
+        if (elements[1].innerHTML !== defaultInput) {
+            showResult([elements[0], elements[1]]);
         }
-        previousNum.innerHTML = currentNum.innerHTML + this.textContent;
-        currentNum.innerHTML = "";
+        elements[1].innerHTML = elements[0].innerHTML + button.textContent;
+        elements[0].innerHTML = defaultInput;
     }
-}
+};

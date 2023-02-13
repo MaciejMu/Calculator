@@ -1,8 +1,3 @@
-import { currentNum } from "../app.js";
-import { previousNum } from "../app.js";
-
-export function clear() {
-  if (currentNum && previousNum) {
-    previousNum.innerHTML = currentNum.innerHTML = "";
-  }
-}
+export const clear = (ElementsToClear: HTMLDivElement[], defaultInput = "") => {
+  ElementsToClear.forEach((element) => (element.innerHTML = defaultInput));
+};

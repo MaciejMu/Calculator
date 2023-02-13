@@ -1,19 +1,18 @@
-import { currentNum, previousNum } from "../app.js";
 import { operation } from "./operation.js";
-export function showResult() {
-    if (currentNum && previousNum) {
-        const operator = previousNum.innerHTML.slice(-1);
-        const a = parseFloat(previousNum.innerHTML);
-        const b = parseFloat(currentNum.innerHTML);
-        if ((previousNum.innerHTML === "" && isNaN(a)) || isNaN(b))
+export const showResult = (Elements) => {
+    if (Elements[1] && Elements[0]) {
+        const operator = Elements[1].innerHTML.slice(-1);
+        const a = parseFloat(Elements[1].innerHTML);
+        const b = parseFloat(Elements[0].innerHTML);
+        if ((Elements[1].innerHTML === "" && isNaN(a)) || isNaN(b))
             return;
         const result = operation(a, b, operator);
-        if (result.toString().length > 18) {
-            currentNum.innerHTML = result.toString();
+        if (result && result.toString().length > 18) {
+            Elements[0].innerHTML = result.toString();
         }
-        else {
-            currentNum.innerHTML = result.toString();
+        else if (result) {
+            Elements[0].innerHTML = result.toString();
         }
-        previousNum.innerHTML = "";
+        Elements[1].innerHTML = "";
     }
-}
+};
